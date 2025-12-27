@@ -856,7 +856,7 @@ const PhantomGridLanding = () => {
                 </span>
               </div>
               <p className="text-slate-500 text-sm">
-                © 2025 Mai Hải Đăng -HD24SecurityLabs. All rights reserved.
+                © 2025 Mai Hải Đăng - HD24SecurityLabs. All rights reserved.
               </p>
             </div>
             

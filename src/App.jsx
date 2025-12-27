@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, Ghost, Network, Cpu, Lock, Terminal, ChevronRight, Github, Mail, Server, Activity, Menu, X, ArrowRight, Zap, Database } from 'lucide-react';
+import { Shield, Ghost, Network, Cpu, Lock, Terminal, ChevronRight, Github, Mail, Server, Activity, Menu, X, ArrowRight, Zap, Database, AlertTriangle, Target, Building2, Cloud, Brain, BarChart3, CheckCircle2 } from 'lucide-react';
 
 const PhantomGridLanding = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -82,6 +82,14 @@ const PhantomGridLanding = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               <a 
+                href="#problem" 
+                onClick={(e) => smoothScroll(e, 'problem')}
+                className="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium relative group"
+              >
+                Thách thức
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a 
                 href="#features" 
                 onClick={(e) => smoothScroll(e, 'features')}
                 className="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium relative group"
@@ -90,11 +98,11 @@ const PhantomGridLanding = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
               <a 
-                href="#architecture" 
-                onClick={(e) => smoothScroll(e, 'architecture')}
+                href="#differentiators" 
+                onClick={(e) => smoothScroll(e, 'differentiators')}
                 className="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium relative group"
               >
-                Kiến trúc
+                Ưu điểm
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
               </a>
               <a 
@@ -132,6 +140,13 @@ const PhantomGridLanding = () => {
           <div className="md:hidden border-t border-slate-800/50 bg-slate-950/98 backdrop-blur-xl">
             <div className="px-4 py-4 space-y-3">
               <a 
+                href="#problem" 
+                onClick={(e) => smoothScroll(e, 'problem')}
+                className="block px-4 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-colors"
+              >
+                Thách thức
+              </a>
+              <a 
                 href="#features" 
                 onClick={(e) => smoothScroll(e, 'features')}
                 className="block px-4 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-colors"
@@ -139,11 +154,11 @@ const PhantomGridLanding = () => {
                 Công nghệ lõi
               </a>
               <a 
-                href="#architecture" 
-                onClick={(e) => smoothScroll(e, 'architecture')}
+                href="#differentiators" 
+                onClick={(e) => smoothScroll(e, 'differentiators')}
                 className="block px-4 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-colors"
               >
-                Kiến trúc
+                Ưu điểm
               </a>
               <a 
                 href="#roadmap" 
@@ -191,8 +206,9 @@ const PhantomGridLanding = () => {
           </h1>
           
           <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed">
-            Biến hạ tầng mạng của bạn thành một <span className="text-cyan-400 font-semibold">"mê cung số"</span>. 
-            Chủ động đánh lừa, phát hiện và cô lập kẻ tấn công ngay tại cấp độ Kernel với công nghệ eBPF tiên tiến.
+            Trong kỷ nguyên của các cuộc tấn công mạng tinh vi (APT), tư duy phòng thủ truyền thống dựa trên "tường lửa" và "chữ ký" đã trở nên lỗi thời. 
+            Phantom Grid biến hạ tầng mạng của bạn thành một <span className="text-cyan-400 font-semibold">"mê cung số"</span>, 
+            chủ động đánh lừa, phát hiện và cô lập kẻ tấn công trước khi thiệt hại xảy ra.
           </p>
           
           {/* CTA Buttons */}
@@ -239,6 +255,81 @@ const PhantomGridLanding = () => {
         </div>
       </section>
 
+      {/* Problem Statement Section */}
+      <section id="problem" className="relative py-32 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+              Bối Cảnh & <span className="text-gradient">Thách Thức</span>
+            </h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+              Sự bất đối xứng trong an ninh mạng là quá lớn: Đội ngũ bảo mật phải đúng 100% thời gian, trong khi kẻ tấn công chỉ cần đúng một lần.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Weaknesses */}
+            <div className="glass rounded-2xl p-8 border border-red-500/20 hover:border-red-500/40 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center">
+                  <AlertTriangle className="w-7 h-7 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Điểm Yếu Cốt Tử</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Di chuyển ngang (Lateral Movement)</h4>
+                    <p className="text-slate-400 text-sm">Sau khi xâm nhập, hacker tự do trinh sát mạng nội bộ. Các giải pháp hiện tại thiếu khả năng kiểm soát luồng giao thông Đông-Tây hiệu quả.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Thời gian phát hiện chậm</h4>
+                    <p className="text-slate-400 text-sm">Trung bình hacker nằm vùng trong hệ thống <span className="text-red-400 font-semibold">21 ngày</span> trước khi bị phát hiện.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Bề mặt tấn công rộng</h4>
+                    <p className="text-slate-400 text-sm">Các dịch vụ quản trị (SSH, Admin Panel) thường phải mở port, tạo cơ hội cho Brute-force và khai thác Zero-day.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Limitations */}
+            <div className="glass rounded-2xl p-8 border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                  <Target className="w-7 h-7 text-orange-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Hạn Chế Giải Pháp Truyền Thống</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-orange-400 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Firewall/IPS</h4>
+                    <p className="text-slate-400 text-sm">Dựa trên tập luật tĩnh, dễ bị qua mặt bởi mã hóa hoặc kỹ thuật giả mạo IP.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-orange-400 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Honeypot truyền thống</h4>
+                    <p className="text-slate-400 text-sm">Tốn kém tài nguyên, độ trễ cao, dễ bị hacker phát hiện là môi trường giả lập (Fingerprinting).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Core Technology Section */}
       <section id="features" className="relative py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -262,17 +353,25 @@ const PhantomGridLanding = () => {
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
                   The Phantom Protocol
                 </h3>
-                <p className="text-slate-400 leading-relaxed mb-6 text-base">
-                  Sử dụng Single Packet Authorization (SPA). Server hoàn toàn "tàng hình" (Dead Host) trước các công cụ quét mạng như Nmap.
+                <p className="text-slate-400 leading-relaxed mb-4 text-base">
+                  <span className="text-cyan-400 font-semibold">Nguyên lý:</span> "Không thể tấn công thứ bạn không nhìn thấy."
+                </p>
+                <p className="text-slate-400 leading-relaxed mb-6 text-sm">
+                  Áp dụng cho các cổng dịch vụ quan trọng (SSH, Database, Admin Panel). Mặc định, eBPF DROP toàn bộ gói tin. 
+                  Server hoàn toàn "chết" (Dead Host) dưới góc nhìn của hacker. Single Packet Authorization (SPA) mở cửa sổ kết nối 30 giây chỉ cho IP được xác thực.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400" />
                     <span className="text-sm">Chặn đứng Brute-force</span>
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
-                    <span className="text-sm">Zero Trust Access</span>
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                    <span className="text-sm">Zero Trust Access thực thụ</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                    <span className="text-sm">Invisible Infrastructure</span>
                   </li>
                 </ul>
               </div>
@@ -288,17 +387,25 @@ const PhantomGridLanding = () => {
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                   The Mirage
                 </h3>
-                <p className="text-slate-400 leading-relaxed mb-6 text-base">
-                  Tạo ra hàng nghìn dịch vụ giả lập (Fake Services) trên các cổng trống. Kẻ tấn công sẽ bị lạc trong mê cung thông tin giả.
+                <p className="text-slate-400 leading-relaxed mb-4 text-base">
+                  <span className="text-purple-400 font-semibold">Nguyên lý:</span> "Tạo nhiễu loạn để che giấu tín hiệu thật."
+                </p>
+                <p className="text-slate-400 leading-relaxed mb-6 text-sm">
+                  Áp dụng cho hàng nghìn cổng không sử dụng. Thay vì trả về RST, eBPF XDP hook tự động sinh ra SYN-ACK giả mạo, 
+                  mô phỏng hàng loạt dịch vụ phổ biến (HTTP, FTP, Telnet). Hacker sẽ bị choáng ngợp bởi hàng ngàn cổng "mở".
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                    <CheckCircle2 className="w-4 h-4 text-purple-400" />
                     <span className="text-sm">Anti-Reconnaissance</span>
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                    <CheckCircle2 className="w-4 h-4 text-purple-400" />
                     <span className="text-sm">Phản hồi gói tin giả tại XDP</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                    <span className="text-sm">High-Fidelity Deception</span>
                   </li>
                 </ul>
               </div>
@@ -314,20 +421,114 @@ const PhantomGridLanding = () => {
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-pink-400 transition-colors">
                   The Portal
                 </h3>
-                <p className="text-slate-400 leading-relaxed mb-6 text-base">
-                  Tự động chuyển hướng (Transparent Redirection) kẻ tấn công vào môi trường Honeypot cô lập để điều tra hành vi.
+                <p className="text-slate-400 leading-relaxed mb-4 text-base">
+                  <span className="text-pink-400 font-semibold">Công nghệ:</span> Transparent Redirection (DNAT không trạng thái).
+                </p>
+                <p className="text-slate-400 leading-relaxed mb-6 text-sm">
+                  Khi hacker tương tác sâu hơn với "Dịch vụ ma", lưu lượng mạng bị âm thầm chuyển hướng sang Container Honeypot để thu thập hành vi. 
+                  Quá trình chuyển hướng trong suốt, không thay đổi địa chỉ IP đích.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-pink-400 rounded-full"></div>
+                    <CheckCircle2 className="w-4 h-4 text-pink-400" />
                     <span className="text-sm">High-Fidelity Forensics</span>
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
-                    <div className="w-1.5 h-1.5 bg-pink-400 rounded-full"></div>
+                    <CheckCircle2 className="w-4 h-4 text-pink-400" />
                     <span className="text-sm">Bảo vệ tài sản thực</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-pink-400" />
+                    <span className="text-sm">Real-time Threat Detection</span>
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Differentiators Section */}
+      <section id="differentiators" className="relative py-32 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+              Tính Năng <span className="text-gradient">Vượt Trội</span>
+            </h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+              Những điểm khác biệt làm nên sức mạnh của Phantom Grid
+            </p>
+          </div>
+
+          <div className="glass rounded-2xl p-8 md:p-12 border border-slate-700/50 overflow-x-auto">
+            <div className="min-w-full">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-slate-700/50">
+                    <th className="text-left py-4 px-6 text-cyan-400 font-bold text-lg">Tính năng</th>
+                    <th className="text-left py-4 px-6 text-cyan-400 font-bold text-lg">Mô tả kỹ thuật</th>
+                    <th className="text-left py-4 px-6 text-cyan-400 font-bold text-lg">Lợi ích doanh nghiệp</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/50">
+                  <tr className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-5 px-6">
+                      <div className="flex items-center gap-3">
+                        <Lock className="w-5 h-5 text-cyan-400" />
+                        <span className="font-semibold text-white">Invisible Infrastructure</span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Ứng dụng SPA (Single Packet Authorization) để ẩn hoàn toàn các port dịch vụ quan trọng
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Loại bỏ <span className="text-green-400 font-semibold">100%</span> rủi ro từ các cuộc tấn công quét lỗ hổng tự động
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-5 px-6">
+                      <div className="flex items-center gap-3">
+                        <Activity className="w-5 h-5 text-purple-400" />
+                        <span className="font-semibold text-white">High-Fidelity Deception</span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Tạo ra hàng nghìn "bẫy" giả lập (Fake Services) mà không tốn tài nguyên phần cứng
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Phát hiện hacker ngay từ giai đoạn <span className="text-purple-400 font-semibold">trinh sát</span> (Pre-attack phase)
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-5 px-6">
+                      <div className="flex items-center gap-3">
+                        <Zap className="w-5 h-5 text-blue-400" />
+                        <span className="font-semibold text-white">Kernel-Level Performance</span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Xử lý gói tin tại tầng XDP (trước khi cấp phát bộ nhớ sk_buff của OS)
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Độ trễ <span className="text-blue-400 font-semibold">&lt; 1ms</span>, không ảnh hưởng đến hiệu năng server production
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-5 px-6">
+                      <div className="flex items-center gap-3">
+                        <BarChart3 className="w-5 h-5 text-pink-400" />
+                        <span className="font-semibold text-white">Real-time Forensics</span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Ghi lại toàn bộ hành vi trong Honeypot (Keystrokes, File uploads)
+                    </td>
+                    <td className="py-5 px-6 text-slate-300 text-sm">
+                      Cung cấp bằng chứng số (Digital Forensics) chính xác để vá lỗ hổng
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -396,6 +597,80 @@ const PhantomGridLanding = () => {
         </div>
       </section>
 
+      {/* Market & Business Model Section */}
+      <section id="market" className="relative py-32 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+              Thị Trường & <span className="text-gradient">Mô Hình</span>
+            </h2>
+            <p className="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+              Giải pháp được thiết kế cho các tổ chức có yêu cầu bảo mật cao nhất
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="glass rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6">
+                <Building2 className="w-8 h-8 text-cyan-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Critical Infrastructure</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                Chính phủ, Điện lực, Viễn thông với yêu cầu chống APT (Advanced Persistent Threats) cao nhất.
+              </p>
+            </div>
+
+            <div className="glass rounded-2xl p-8 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
+                <Shield className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">BFSI Sector</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                Ngân hàng, Tài chính, Bảo hiểm cần bảo vệ dữ liệu nhạy cảm và tuân thủ các quy định nghiêm ngặt.
+              </p>
+            </div>
+
+            <div className="glass rounded-2xl p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6">
+                <Cloud className="w-8 h-8 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Cloud Providers</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                Các đơn vị cung cấp hạ tầng muốn tăng cường bảo mật cho khách hàng (Security-as-a-Service).
+              </p>
+            </div>
+          </div>
+
+          <div className="glass rounded-2xl p-8 md:p-12 border border-slate-700/50">
+            <h3 className="text-2xl font-bold text-white mb-8 text-center">Mô Hình Triển Khai</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <Server className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">On-Premises Agent</h4>
+                  <p className="text-slate-400 text-sm">
+                    Cài đặt trực tiếp trên các máy chủ vật lý (Bare-metal) để bảo vệ hạ tầng tại chỗ.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0">
+                  <Database className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Kubernetes Sidecar</h4>
+                  <p className="text-slate-400 text-sm">
+                    Triển khai như một DaemonSet để bảo vệ toàn bộ Cluster (Cloud-Native).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Roadmap */}
       <section id="roadmap" className="relative py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -440,7 +715,8 @@ const PhantomGridLanding = () => {
                     <span className="text-xs text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Q1-Q2 2026</span>
                   </div>
                   <p className="text-slate-400 leading-relaxed">
-                    Intelligence & Integration: Tích hợp AI (Adaptive Deception) và đẩy log về SIEM (Splunk/Elastic).
+                    Intelligence & Integration: Tích hợp AI (Adaptive Deception) để học hành vi hacker và tự động thay đổi cấu hình bẫy. 
+                    Đẩy log về SIEM (Splunk/Elasticsearch).
                   </p>
                 </div>
               </div>
@@ -456,7 +732,8 @@ const PhantomGridLanding = () => {
                     <span className="text-xs text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Q3-Q4 2026</span>
                   </div>
                   <p className="text-slate-400 leading-relaxed">
-                    Ecosystem Expansion: Cloud-Native Security cho Kubernetes & Marketplace cho Honeypot templates.
+                    Ecosystem Expansion: Cloud-Native Security cho Kubernetes & Service Mesh (Istio/Linkerd). 
+                    Marketplace cho phép cộng đồng đóng góp các mẫu Honeypot templates mới.
                   </p>
                 </div>
               </div>

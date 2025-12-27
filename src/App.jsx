@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, Ghost, Network, Cpu, Lock, Terminal, ChevronRight, Github, Mail, Server, Activity, Menu, X, ArrowRight, Zap, Database, AlertTriangle, Target, Building2, Cloud, Brain, BarChart3, CheckCircle2 } from 'lucide-react';
+import { Shield, Ghost, Network, Cpu, Lock, Terminal, ChevronRight, Github, Mail, Server, Activity, Menu, X, ArrowRight, Zap, Database, AlertTriangle, Target, Building2, Cloud, Brain, BarChart3, CheckCircle2, Play, Eye, EyeOff, RefreshCw } from 'lucide-react';
 
 const PhantomGridLanding = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -82,6 +82,14 @@ const PhantomGridLanding = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               <a 
+                href="#demo" 
+                onClick={(e) => smoothScroll(e, 'demo')}
+                className="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium relative group"
+              >
+                Demo
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a 
                 href="#problem" 
                 onClick={(e) => smoothScroll(e, 'problem')}
                 className="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium relative group"
@@ -139,6 +147,13 @@ const PhantomGridLanding = () => {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-slate-800/50 bg-slate-950/98 backdrop-blur-xl">
             <div className="px-4 py-4 space-y-3">
+              <a 
+                href="#demo" 
+                onClick={(e) => smoothScroll(e, 'demo')}
+                className="block px-4 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-colors"
+              >
+                Demo
+              </a>
               <a 
                 href="#problem" 
                 onClick={(e) => smoothScroll(e, 'problem')}
@@ -254,6 +269,9 @@ const PhantomGridLanding = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive Demo Section */}
+      <DemoSection />
 
       {/* Problem Statement Section */}
       <section id="problem" className="relative py-32 bg-slate-900/30">
@@ -672,69 +690,153 @@ const PhantomGridLanding = () => {
       </section>
 
       {/* Roadmap */}
-      <section id="roadmap" className="relative py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="roadmap" className="relative py-32 bg-slate-900/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
               Lộ Trình <span className="text-gradient">Phát Triển</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Tầm nhìn và kế hoạch phát triển dài hạn
+              Tầm nhìn và kế hoạch phát triển dài hạn với những mốc quan trọng
             </p>
           </div>
           
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-slate-700 to-slate-700"></div>
+            {/* Enhanced Timeline Line */}
+            <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-1">
+              <div className="absolute inset-0 bg-gradient-to-b from-green-500 via-blue-500 via-purple-500 to-slate-700 opacity-30"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-green-500/80 via-blue-500/50 to-transparent" style={{ height: '33%' }}></div>
+            </div>
             
-            <div className="space-y-12">
-              {/* Phase 1 */}
-              <div className="relative flex items-start md:items-center gap-6 md:odd:flex-row-reverse">
-                <div className="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 border-4 border-slate-950">
-                  <Shield className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                </div>
-                <div className="flex-1 md:w-[calc(50%-4rem)] glass rounded-2xl p-6 md:p-8 border border-green-500/30 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3 gap-2">
-                    <span className="text-green-400 font-bold text-lg">Giai đoạn 1</span>
-                    <span className="text-xs text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Hoàn thành</span>
+            <div className="space-y-16">
+              {/* Phase 1 - Completed */}
+              <div className="relative group">
+                <div className="flex flex-col md:flex-row md:items-center gap-8">
+                  {/* Icon Badge */}
+                  <div className="relative z-20 flex-shrink-0 md:w-1/2 md:flex md:justify-end">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-green-500/50 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl shadow-green-500/40 border-4 border-slate-950 group-hover:scale-110 transition-transform duration-300">
+                        <Shield className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-4 border-slate-950 flex items-center justify-center">
+                          <CheckCircle2 className="w-3 h-3 text-slate-950" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-slate-300 leading-relaxed">
-                    Core Foundation: Xây dựng nhân eBPF XDP/TC, hoàn thiện giao thức SPA và Agent Golang.
-                  </p>
+                  
+                  {/* Content Card */}
+                  <div className="relative md:w-1/2">
+                    <div className="glass rounded-3xl p-8 border-2 border-green-500/40 bg-gradient-to-br from-green-500/5 to-transparent hover:border-green-500/60 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-1 group/card">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-3">
+                        <div>
+                          <span className="inline-flex items-center gap-2 text-green-400 font-bold text-xl mb-2">
+                            Giai đoạn 1
+                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30">
+                          <CheckCircle2 className="w-3 h-3" />
+                          Hoàn thành
+                        </span>
+                      </div>
+                      <h3 className="text-white font-semibold text-lg mb-3">Core Foundation</h3>
+                      <p className="text-slate-300 leading-relaxed mb-4">
+                        Xây dựng nhân eBPF XDP/TC, hoàn thiện giao thức SPA và Agent Golang.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-3 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">eBPF/XDP</span>
+                        <span className="text-xs px-3 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">SPA Protocol</span>
+                        <span className="text-xs px-3 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">Golang Agent</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Phase 2 */}
-              <div className="relative flex items-start md:items-center gap-6 md:even:flex-row-reverse">
-                <div className="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center border-4 border-slate-950">
-                  <Cpu className="w-8 h-8 md:w-10 md:h-10 text-slate-400" />
-                </div>
-                <div className="flex-1 md:w-[calc(50%-4rem)] glass rounded-2xl p-6 md:p-8 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3 gap-2">
-                    <span className="text-white font-bold text-lg">Giai đoạn 2</span>
-                    <span className="text-xs text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Q1-Q2 2026</span>
+              {/* Phase 2 - In Progress */}
+              <div className="relative group">
+                <div className="flex flex-col md:flex-row-reverse md:items-center gap-8">
+                  {/* Icon Badge */}
+                  <div className="relative z-20 flex-shrink-0 md:w-1/2 md:flex md:justify-start">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-blue-500/50 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-2xl shadow-blue-500/40 border-4 border-slate-950 group-hover:scale-110 transition-transform duration-300">
+                        <Cpu className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-400 rounded-full border-4 border-slate-950 flex items-center justify-center animate-pulse">
+                          <div className="w-2 h-2 bg-slate-950 rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-slate-400 leading-relaxed">
-                    Intelligence & Integration: Tích hợp AI (Adaptive Deception) để học hành vi hacker và tự động thay đổi cấu hình bẫy. 
-                    Đẩy log về SIEM (Splunk/Elasticsearch).
-                  </p>
+                  
+                  {/* Content Card */}
+                  <div className="relative md:w-1/2 md:text-right">
+                    <div className="glass rounded-3xl p-8 border-2 border-blue-500/40 bg-gradient-to-br from-blue-500/5 to-transparent hover:border-blue-500/60 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1 group/card">
+                      <div className="flex flex-col md:flex-row-reverse md:justify-between md:items-start mb-4 gap-3">
+                        <div>
+                          <span className="inline-flex items-center gap-2 text-blue-400 font-bold text-xl mb-2">
+                            <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                            Giai đoạn 2
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 bg-blue-500/20 px-4 py-2 rounded-full border border-blue-500/30">
+                          Q1-Q2 2026
+                        </span>
+                      </div>
+                      <h3 className="text-white font-semibold text-lg mb-3">Intelligence & Integration</h3>
+                      <p className="text-slate-300 leading-relaxed mb-4">
+                        Tích hợp AI (Adaptive Deception) để học hành vi hacker và tự động thay đổi cấu hình bẫy. 
+                        Đẩy log về SIEM (Splunk/Elasticsearch).
+                      </p>
+                      <div className="flex flex-wrap gap-2 md:justify-end">
+                        <span className="text-xs px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">AI Integration</span>
+                        <span className="text-xs px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">SIEM</span>
+                        <span className="text-xs px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">Adaptive Deception</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Phase 3 */}
-              <div className="relative flex items-start md:items-center gap-6 md:odd:flex-row-reverse">
-                <div className="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center border-4 border-slate-950">
-                  <Server className="w-8 h-8 md:w-10 md:h-10 text-slate-400" />
-                </div>
-                <div className="flex-1 md:w-[calc(50%-4rem)] glass rounded-2xl p-6 md:p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3 gap-2">
-                    <span className="text-white font-bold text-lg">Giai đoạn 3</span>
-                    <span className="text-xs text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Q3-Q4 2026</span>
+              {/* Phase 3 - Upcoming */}
+              <div className="relative group">
+                <div className="flex flex-col md:flex-row md:items-center gap-8">
+                  {/* Icon Badge */}
+                  <div className="relative z-20 flex-shrink-0 md:w-1/2 md:flex md:justify-end">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-purple-500/50 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-2xl shadow-purple-500/40 border-4 border-slate-950 group-hover:scale-110 transition-transform duration-300">
+                        <Server className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-slate-400 leading-relaxed">
-                    Ecosystem Expansion: Cloud-Native Security cho Kubernetes & Service Mesh (Istio/Linkerd). 
-                    Marketplace cho phép cộng đồng đóng góp các mẫu Honeypot templates mới.
-                  </p>
+                  
+                  {/* Content Card */}
+                  <div className="relative md:w-1/2">
+                    <div className="glass rounded-3xl p-8 border-2 border-purple-500/40 bg-gradient-to-br from-purple-500/5 to-transparent hover:border-purple-500/60 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:-translate-y-1 group/card">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-3">
+                        <div>
+                          <span className="inline-flex items-center gap-2 text-purple-400 font-bold text-xl mb-2">
+                            Giai đoạn 3
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-2 text-xs font-semibold text-purple-400 bg-purple-500/20 px-4 py-2 rounded-full border border-purple-500/30">
+                          Q3-Q4 2026
+                        </span>
+                      </div>
+                      <h3 className="text-white font-semibold text-lg mb-3">Ecosystem Expansion</h3>
+                      <p className="text-slate-300 leading-relaxed mb-4">
+                        Cloud-Native Security cho Kubernetes & Service Mesh (Istio/Linkerd). 
+                        Marketplace cho phép cộng đồng đóng góp các mẫu Honeypot templates mới.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full border border-purple-500/30">Kubernetes</span>
+                        <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full border border-purple-500/30">Service Mesh</span>
+                        <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full border border-purple-500/30">Marketplace</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -754,7 +856,7 @@ const PhantomGridLanding = () => {
                 </span>
               </div>
               <p className="text-slate-500 text-sm">
-                © 2025 Mai Hải Đăng. All rights reserved.
+                © 2025 Mai Hải Đăng -HD24SecurityLabs. All rights reserved.
               </p>
             </div>
             
@@ -778,6 +880,185 @@ const PhantomGridLanding = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+// Demo Section Component
+const DemoSection = () => {
+  const [isRunning, setIsRunning] = useState(false);
+  const [demoStep, setDemoStep] = useState(0);
+  const [activeDemo, setActiveDemo] = useState(null);
+
+  const portScanDemo = {
+    before: [
+      { cmd: '$ nmap -p- 192.168.1.100', delay: 500 },
+      { cmd: '', delay: 300, output: 'Starting Nmap 7.94...' },
+      { cmd: '', delay: 300, output: 'Nmap scan report for 192.168.1.100' },
+      { cmd: '', delay: 200, output: 'PORT     STATE    SERVICE' },
+      { cmd: '', delay: 200, output: '22/tcp   open     ssh      ⚠️ EXPOSED' },
+      { cmd: '', delay: 200, output: '80/tcp   open     http' },
+      { cmd: '', delay: 200, output: '443/tcp  open     https' },
+      { cmd: '', delay: 200, output: '3306/tcp open     mysql    ⚠️ EXPOSED' },
+      { cmd: '', delay: 300, output: 'Nmap done: 1 IP address (4 open ports)' },
+    ],
+    after: [
+      { cmd: '$ nmap -p- 192.168.1.100', delay: 500 },
+      { cmd: '', delay: 300, output: 'Starting Nmap 7.94...' },
+      { cmd: '', delay: 300, output: 'Nmap scan report for 192.168.1.100' },
+      { cmd: '', delay: 500, output: 'PORT     STATE    SERVICE' },
+      { cmd: '', delay: 300, output: '22/tcp   filtered ssh      ✅ HIDDEN' },
+      { cmd: '', delay: 200, output: '80/tcp   open     http' },
+      { cmd: '', delay: 200, output: '443/tcp  open     https' },
+      { cmd: '', delay: 200, output: '3306/tcp filtered mysql    ✅ HIDDEN' },
+      { cmd: '', delay: 200, output: '8080/tcp open     http-proxy' },
+      { cmd: '', delay: 200, output: '9090/tcp open     http-alt' },
+      { cmd: '', delay: 300, output: '... (1000+ fake services detected)' },
+      { cmd: '', delay: 300, output: 'Nmap done: 1 IP address (1000+ open ports)' },
+      { cmd: '', delay: 200, output: '⚠️  Attacker confused by fake services!' },
+    ]
+  };
+
+  const runDemo = async (type) => {
+    setIsRunning(true);
+    setActiveDemo(type);
+    setDemoStep(0);
+    const steps = portScanDemo[type];
+    
+    for (let i = 0; i < steps.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, steps[i].delay));
+      setDemoStep(i + 1);
+    }
+    
+    setTimeout(() => setIsRunning(false), 1000);
+  };
+
+  return (
+    <section id="demo" className="relative py-32 bg-slate-900/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+            Trải Nghiệm <span className="text-gradient">Demo</span>
+          </h2>
+          <p className="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+            Xem Phantom Grid hoạt động trong thực tế - So sánh trước và sau khi triển khai
+          </p>
+        </div>
+
+        {/* Before/After Comparison */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Before - Without Phantom Grid */}
+          <div className="glass rounded-2xl p-6 border border-red-500/30 hover:border-red-500/50 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <AlertTriangle className="w-5 h-5 text-red-400" />
+                <h3 className="text-xl font-bold text-white">Trước khi triển khai</h3>
+              </div>
+              <button
+                onClick={() => runDemo('before')}
+                disabled={isRunning}
+                className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg text-sm font-medium transition-all disabled:opacity-50 flex items-center gap-2"
+              >
+                <Play size={14} />
+                Chạy Demo
+              </button>
+            </div>
+            <div className="bg-slate-950 rounded-xl p-4 font-mono text-sm h-80 overflow-y-auto">
+              <div className="space-y-1">
+                {activeDemo === 'before' && portScanDemo.before.slice(0, demoStep).map((step, idx) => (
+                  <div key={idx} className="flex flex-wrap gap-2">
+                    {step.cmd && <span className="text-green-400">{step.cmd}</span>}
+                    {step.output && (
+                      <span className={step.output.includes('⚠️') ? 'text-red-400' : 'text-slate-300'}>
+                        {step.output}
+                      </span>
+                    )}
+                  </div>
+                ))}
+                {isRunning && activeDemo === 'before' && demoStep === 0 && (
+                  <span className="text-purple-400 animate-pulse">_</span>
+                )}
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-slate-400">
+              ⚠️ Server dễ bị tấn công: Ports quan trọng đang mở và có thể nhìn thấy
+            </p>
+          </div>
+
+          {/* After - With Phantom Grid */}
+          <div className="glass rounded-2xl p-6 border border-green-500/30 hover:border-green-500/50 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <Shield className="w-5 h-5 text-green-400" />
+                <h3 className="text-xl font-bold text-white">Sau khi triển khai</h3>
+              </div>
+              <button
+                onClick={() => runDemo('after')}
+                disabled={isRunning}
+                className="px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg text-sm font-medium transition-all disabled:opacity-50 flex items-center gap-2"
+              >
+                <Play size={14} />
+                Chạy Demo
+              </button>
+            </div>
+            <div className="bg-slate-950 rounded-xl p-4 font-mono text-sm h-80 overflow-y-auto">
+              <div className="space-y-1">
+                {activeDemo === 'after' && portScanDemo.after.slice(0, demoStep).map((step, idx) => (
+                  <div key={idx} className="flex flex-wrap gap-2">
+                    {step.cmd && <span className="text-green-400">{step.cmd}</span>}
+                    {step.output && (
+                      <span className={
+                        step.output.includes('✅') ? 'text-green-400' :
+                        step.output.includes('⚠️') ? 'text-yellow-400' :
+                        'text-slate-300'
+                      }>
+                        {step.output}
+                      </span>
+                    )}
+                  </div>
+                ))}
+                {isRunning && activeDemo === 'after' && demoStep === 0 && (
+                  <span className="text-purple-400 animate-pulse">_</span>
+                )}
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-slate-400">
+              ✅ Server được bảo vệ: Ports quan trọng đã ẩn, kẻ tấn công bị đánh lừa bởi fake services
+            </p>
+          </div>
+        </div>
+
+        {/* Key Features Demo Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="glass rounded-xl p-6 border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-3">
+              <EyeOff className="w-5 h-5 text-cyan-400" />
+              <h4 className="font-bold text-white">Port Invisibility</h4>
+            </div>
+            <p className="text-sm text-slate-400">
+              Port 22 (SSH) và 3306 (MySQL) hoàn toàn "tàng hình" trước công cụ quét Nmap
+            </p>
+          </div>
+          <div className="glass rounded-xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-3">
+              <Network className="w-5 h-5 text-purple-400" />
+              <h4 className="font-bold text-white">Fake Services</h4>
+            </div>
+            <p className="text-sm text-slate-400">
+              Hàng nghìn cổng giả lập được tạo ra tự động để đánh lừa kẻ tấn công
+            </p>
+          </div>
+          <div className="glass rounded-xl p-6 border border-pink-500/20 hover:border-pink-500/40 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-3">
+              <Activity className="w-5 h-5 text-pink-400" />
+              <h4 className="font-bold text-white">Real-time Detection</h4>
+            </div>
+            <p className="text-sm text-slate-400">
+              Phát hiện ngay khi kẻ tấn công cố gắng quét và tương tác với server
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
